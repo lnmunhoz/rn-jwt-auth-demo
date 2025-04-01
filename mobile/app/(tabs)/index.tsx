@@ -1,14 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from "react-native";
+import { useAuth } from "../context/auth";
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+export default function HomeScreen() {
+  const { user } = useAuth();
 
-export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Text style={styles.title}>Welcome, {user?.email}!</Text>
+      <Text style={styles.subtitle}>You are successfully logged in.</Text>
     </View>
   );
 }
@@ -16,16 +15,18 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
+    backgroundColor: "#fff",
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 10,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  subtitle: {
+    fontSize: 16,
+    color: "#666",
   },
 });

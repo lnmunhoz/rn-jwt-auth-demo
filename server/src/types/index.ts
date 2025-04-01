@@ -18,9 +18,7 @@ export interface LoginCredentials {
   password: string;
 }
 
-export interface RegisterCredentials extends LoginCredentials {
-  confirmPassword: string;
-}
+export interface RegisterCredentials extends LoginCredentials {}
 
 export interface AuthResponse {
   token: string;
